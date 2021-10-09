@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+    crossorigin="anonymous"
+  ></script>
+    <title>Price prediction</title>
+    <link
+    rel="stylesheet"
+    href="{{url_for('static',filename='css/index.css') }}"
+  />
+  
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e2d3c3 ;" !important" >
+    
+    <a class="navbar-brand" href="/">SPARTANS COMMODITY PREDICTIONS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="navbar-brand" href="/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand" href="../templates/aboutus.html">AboutUS</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="navbar-brand" href="#" tabindex="-1" aria-disabled="true">ContactUS</a>
+        </li>
+      </ul>
+     
+    </div>
+  </nav>
+
+
+<!-- this ection is for the actual content  -->
+<div class="big-container">
+   <div class="container">
+     <div class="row">
+       <div class="card mt-50 " style="width: 100%; height: 100%;">
+        <div class="card-header" >
+		   
+          <h1>Welcome to Spartans Price Predictions </h1>
+        </div>
+        <div class="card-body" >
+          <div class="col-12 ">
+            <h5 class="short-header">We predict the future price of the required commodities</h5>
+          </div>
+          <br>
+
+          <form method="post" accept-charset="utf-8" name="ModelForm" action="/predict">
+            <div class="col-md-10 form-group " style="text-align: center;">
+            
+            <label style="text-align:center"><strong>Select the Type</strong></label>
+            <select class="selectpicker form-control " style="width:120%!important;" name="Metal" id="Metal"required="1"onchange="load_metal_name(this.id,'' )" >
+            
+            {% for metal in Metals %}
+            <option value ="{{metal}}">{{metal}}</option>
+            {% endfor %}
+            </select>
+          </div>
+
+          <!-- 2nd colum  -->
+          <div class="col-md-10 form-group " style="text-align: center;">
+            
+            <label><strong>Select the Year</strong></label>
+            <select class="selectpicker form-control " style="width:120%!important;" name="Year" id="Year" required="1"onchange="load_metal_name(this.id,'' )" >
+            
+            {% for Year in Year%}
+            <option value ="{{Year}}">{{Year}}</option>
+            {% endfor %}
+            </select>
+          </div>
+
+<!-- 3rd column -->
+
+          <div class="col-md-10 form-group " style="text-align: center;">
+            
+            <label><strong>Select the Month</strong></label>
+            <select class="selectpicker form-control " style="width:120%!important;" name="Month" id="Month" required="1"onchange="load_metal_name(this.id ,'')" >
+            
+            {% for Month in Month %}
+            <option value ="{{Month}}">{{Month}}</option>
+            {% endfor %}
+            </select>
+          </div>
+
+          <div class="col-md-10 form-group" style="text-align: center;">
+		     <button class="btn btn-primary form-control " style="width:120%!important;" type = "submit">Predict the Price</button>
+          </div>
+
+          </form>
+          <br>
+        
+          <!-- for showing the price  -->
+          <div class="row">
+            <div class="col-12" style="text-align:center;">
+				{% if prediction != 0 %}
+					<h4><span id="prediction">Expected Price: {{prediction}} $/toz</span></h4>
+				{%endif%}
+            </div>
+          </div>
+		  {% if MetalName == 'Gold'%}
+			<div id="chart1" class="chart1"  align="center"> </div>	
+		  {% elif MetalName == 'Silver'%}
+			<div id="chart2" class="chart2"  align="center"> </div>	
+		  {% elif MetalName == 'Platinum'%}
+			<div id="chart3" class="chart3"  align="center"> </div>	
+		  {% endif %}	 
+        </div>
+      </div>
+     </div>
+
+   </div>
+  </div>
+   <script>
+
+function form_handler(event){
+  event.preventDefault();
+}   
+
+function send_data(){
+    document.querySelector('form').addEventListener('submit',form_handler) ;
+    
+    var fd =  new FormData(document.querySelector("form"));
+
+    var xhr =  new XMLHttpRequest({mozSystem:true})
+
+    xhr.open('POST','/predict',true)
+    document.getElementById('prediction').innerHTML="wait! Predicting the price ....."
+
+    xhr.onreadystatechange =function(){
+      if(xhr.readyState == XMLHttpRequest.DONE){
+        document.getElementById('prediction').innerHTML="Predicted Price: $ "+""+xhr.responseText;
+        
+      }
+    };
+
+    xhr.onload = function(){};
+    xhr.send(fd);
+    }
+</script>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+	var graphs1 = {{graphJSON | safe}};
+	Plotly.plot('chart1',graphs1,{});
+</script>
+<script type="text/javascript">
+	var graphs2 = {{graphJSON2 | safe}};
+	Plotly.plot('chart2',graphs2,{});
+</script>
+<script type="text/javascript">
+	var graphs3 = {{graphJSON3 | safe}};
+	Plotly.plot('chart3',graphs3,{});
+</script>
+</body>
+</html>

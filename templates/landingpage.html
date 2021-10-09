@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/landing.css') }}">
+    <title>Commodity Predictor</title>
+</head>
+<body>
+    <section class="showcase" >
+        <header>
+            <h2 class="logo">Commodity Predictor</h2>
+            
+            <!-- <div id="navbar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            </div> -->
+            <!-- <div class="toggle active"></div> -->
+        </header>
+        <!-- <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul> -->
+        <video src="{{url_for('static',filename='bg_video.mp4') }}" muted loop autoplay></video>
+        <div class="overlay"></div>
+        <div class="text">
+            <h2>Commodity Predictor </h2> 
+			<br>
+            <h3 style="font-size: 25px"> Impartial, Explainable Price Predictions </h3>
+            <p>We use Artificial Intelligence on all the data that matters to help manufacturing companies reduce operating costs and manage commodities price risk.</p>
+			
+            <a href="/home" class="btn-1">Go to Web App</a>
+            
+        </div>
+
+    </section>
+    <!-- <div class="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </div> -->
+    <!-- <script>
+        const menuToggle = document.querySelector('.toggle')
+        const showcase = document.querySelector('.showcase')
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            showcase.classList.toggle('active');
+        })
+    </script> -->
+    
+</body>
+</html>
