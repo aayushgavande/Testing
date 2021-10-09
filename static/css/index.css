@@ -1,0 +1,62 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+    /* background: linear-gradient(rgb(146, 238, 233), rgb(219, 149, 247)); */
+   
+}
+
+.big-container{
+    background: linear-gradient(rgb(146, 238, 233), rgb(219, 149, 247));
+}
+
+h1{
+    font-weight: bolder;
+    font-family: auto;
+    font-style: italic
+}
+
+.col-12{
+    text-align: center !important;
+}
+
+
+header{
+    justify-content: space-between;
+    display: flex;
+}
+
+
+
+.card mt-50{
+    width: 100%;
+    height: 100%;
+}
+
+
+.sub-heading{
+    text-align: center;
+}
+
+
+
+.card-header{
+    text-align: center;
+    color: rgb(23, 123, 253);
+    background-image: linear-gradient(
+        180deg, #f4cfcf, #ff00a552);
+    height: 100px;
+  
+}
+
+.label-head{
+    text-align: center !important;
+}
+
+
+.container{
+    width: 70% !important;
+    padding: 100px;
+}
+
+.card-body{
+    background-image: linear-gradient(to right,  #fca7da , #f8cce8) !important; 
+}
